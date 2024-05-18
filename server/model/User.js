@@ -43,10 +43,10 @@ const UserSchema = new mongoose.Schema({
   },
   imageUrl: {
     type: String,
-    default: "https://i.ibb.co/kqyCsxq/profile.png",
+    default: "https://i.ibb.co/D4Mp2zs/profile.png",
   },
 });
 
-const UserModel = mongoose.model("employees", UserSchema);
+const UserModel = mongoose.model("users", UserSchema);
 
 module.exports = UserModel;

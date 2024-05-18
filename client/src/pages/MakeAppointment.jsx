@@ -1,11 +1,11 @@
 import { useAppointment } from "../context/AppointmentContext";
 import React, { useState } from "react";
-import { ArrowForward } from "@mui/icons-material";
+import { ArrowForward, Home } from "@mui/icons-material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useLogin } from "../context/LoginContext";
 
 const MakeAppointment = () => {
@@ -33,8 +33,16 @@ const MakeAppointment = () => {
         onSubmit={Submit}
         className="flex flex-col p-32 w-full h-full bg-white rounded-2xl"
       >
-        <h1 className="font-bold text-[32px]">Book your appointment now</h1>
-        <p className="mb-10">So our team can reach out to you on times</p>
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <h1 className="font-bold text-[32px]">Book your appointment now</h1>
+            <p>So our team can reach out to you on times</p>
+          </div>
+
+          <NavLink to="/" className="btn btn-circle btn-primary">
+            <Home />
+          </NavLink>
+        </div>
 
         <div className="grid grid-cols-2 gap-5 mb-5">
           <label className="form-control w-full">

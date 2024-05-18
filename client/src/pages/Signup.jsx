@@ -7,9 +7,9 @@ import GoogleIcon from "../assets/googleicon.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function Signup() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedGender, setSelectedGender] = useState("");
   const [date, setDate] = useState("");
@@ -42,6 +42,9 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
+
     axios
       .post("http://localhost:3001/register", {
         name,
@@ -55,15 +58,30 @@ function Signup() {
         console.log(result);
         navigate("/login");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        setError(
+          "Failed to register. Please check your details and try again."
+        );
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
     <div className="bg-gradient-to-b from-slate-400 via-orange-300 to-orange-500 flex flex-col items-center justify-center py-16">
       <div className="w-[592px]">
-        {error && <div className="error">{error}</div>}
+        {error && (
+          <div
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+            role="alert"
+          >
+            {error}
+          </div>
+        )}
         <div>
-          <img src={SiteLogo} className="w-[48px] mx-auto" alt="" />
+          <NavLink to="/">
+            <img src={SiteLogo} className="w-[48px] mx-auto" alt="Site Logo" />
+          </NavLink>
           <h1 className="text-secondary text-[32px] font-medium mb-10 text-center">
             Sign up for free to start booking
           </h1>
@@ -161,7 +179,7 @@ function Signup() {
                   checked={selectedGender === "female"}
                   onChange={handleGenderChange}
                 />
-                <span className="label-text">female</span>
+                <span className="label-text">Female</span>
               </label>
               <label className="label cursor-pointer flex gap-2 justify-start">
                 <input
@@ -171,7 +189,7 @@ function Signup() {
                   checked={selectedGender === "nonbinary"}
                   onChange={handleGenderChange}
                 />
-                <span className="label-text">non binary</span>
+                <span className="label-text">Non-binary</span>
               </label>
             </div>
           </div>
@@ -203,6 +221,7 @@ function Signup() {
                 <select
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
+                  required
                   className="select select-bordered bg-transparent select-secondary rounded-xl"
                 >
                   <option value="">Select Date</option>
@@ -220,6 +239,7 @@ function Signup() {
                 <select
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
+                  required
                   className="select select-bordered bg-transparent select-secondary rounded-xl"
                 >
                   <option value="">Select Year</option>
@@ -235,8 +255,9 @@ function Signup() {
           <label className="label cursor-pointer items-start flex justify-start gap-2">
             <input
               type="checkbox"
-              value="nonbinary"
+              value="shareReg"
               className="checkbox checkbox-sm rounded-md checkbox-secondary"
+              checked={shareReg}
               onChange={() => setShareReg(!shareReg)}
             />
             <span className="label-text">
@@ -245,8 +266,9 @@ function Signup() {
             </span>
           </label>
           <p>
-            By creating an account, you agree to the Terms of use and Privacy
-            Policy.
+            By creating an account, you agree to the{" "}
+            <Link className="underline">Terms of use</Link> and{" "}
+            <Link className="underline">Privacy Policy</Link>.
           </p>
           <button
             type="submit"
@@ -256,7 +278,7 @@ function Signup() {
             {loading ? "Signing up..." : "Sign Up"}
           </button>
           <p className="text-center">
-            Already have an ccount?{" "}
+            Already have an account?{" "}
             <NavLink to="/login" className="underline">
               Log in
             </NavLink>

@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 import DedicatedDoc from "../assets/dedicated.png";
 import DedicatedDoc2 from "../assets/doctor2.png";
 
-const DedicatedDoctor = () => {
+const DedicatedDoctor = ({ id }) => {
   return (
-    <div className="py-32 grid grid-cols-2 gap-16 items-center">
+    <div className="py-32 grid grid-cols-2 gap-16 items-center" id={id}>
       <div className="relative">
         <img src={DedicatedDoc} alt="" className="rounded-xl" />
         <div className="w-[160px] h-[208px] rounded-xl overflow-hidden absolute right-20 -bottom-20 bg-white px-5 py-2 text-center">

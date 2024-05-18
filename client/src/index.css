@@ -10,7 +10,9 @@
   --text-color: black;
   --footer-color: #204ea5;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Poppins", sans-serif;
   font-size: 18px;

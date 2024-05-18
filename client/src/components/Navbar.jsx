@@ -4,9 +4,11 @@ import SiteLogo from "../assets/logo.png";
 import ProfileImg from "../assets/profile.png";
 import axios from "axios";
 import Logout from "./Logout";
+import Scrollspy from "react-scrollspy";
 
-const Navbar = () => {
+const Navbar = ({ id }) => {
   const [user, setUser] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -26,28 +28,48 @@ const Navbar = () => {
     } else {
       console.log("No token found");
     }
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <div className="navbar py-10 z-40">
+    <div
+      className={`navbar py-10 z-40 px-36 mx-auto fixed top-0 transition-all ease-in-out duration-300 ${
+        scrolled && "bg-white py-2"
+      }`}
+      id={id}
+    >
       <div className="navbar-start">
         <NavLink to="/">
           <img src={SiteLogo} className="w-[100px]" alt="Site Logo" />
         </NavLink>
-        <ul className="menu menu-horizontal ms-20 font-medium">
+
+        <Scrollspy
+          items={["home", "about", "services", "contact"]}
+          currentClassName="is-current"
+          className="menu menu-horizontal ms-20 font-medium"
+        >
           <li>
-            <Link to="/">Home</Link>
+            <a href="#home">Home</a>
           </li>
           <li>
-            <Link to="/">About Us</Link>
+            <a href="#about">About Us</a>
           </li>
           <li>
-            <Link to="/">Services</Link>
+            <a href="#services">Services</a>
           </li>
           <li>
-            <Link to="/">Contact</Link>
+            <a href="#contact">Contact</a>
           </li>
-        </ul>
+        </Scrollspy>
       </div>
 
       <div className="navbar-end">

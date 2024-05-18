@@ -12,18 +12,18 @@ function Home() {
   return (
     <>
       <div className="bg-gradient-to-b from-slate-400 via-orange-300 to-orange-500">
+        <Navbar />
         <div className="px-36 mx-auto">
-          <Navbar />
-          <Banner />
-          <Services />
+          <Banner id="home" />
+          <Services id="services" />
         </div>
         <div>
           <WhyChoose />
 
           <div className="px-36 mx-auto">
-            <DedicatedDoctor />
+            <DedicatedDoctor id="about" />
             <PatientTestimonial />
-            <GetInTouch />
+            <GetInTouch id="contact" />
           </div>
         </div>
       </div>

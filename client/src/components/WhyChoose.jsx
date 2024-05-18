@@ -8,7 +8,9 @@ const WhyChoose = () => {
   return (
     <div className="px-16 py-20 bg-[#D1CCA3]">
       <div className="px-[350px] text-center">
-        <h3 className="text-white font-semibold">Services</h3>
+        <h3 className="text-white font-semibold">
+          DR. Tricia Mitch M. Mallare
+        </h3>
         <h1 className="text-[36px] font-bold mb-10">
           Watch video to learn why he is the right doctor for you
         </h1>

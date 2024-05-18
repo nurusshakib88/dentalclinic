@@ -1,11 +1,11 @@
 import React from "react";
 import { useService } from "../context/ServiceContext";
 
-const Services = () => {
+const Services = ({ id }) => {
   const { services } = useService();
 
   return (
-    <div className="py-20">
+    <div className="pt-32 pb-20" id={id}>
       <div className="px-[350px] text-center">
         <h3 className="text-primary font-semibold">Services</h3>
         <h1 className="text-[36px] font-bold mb-10">

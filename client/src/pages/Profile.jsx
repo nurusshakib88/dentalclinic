@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProfileImg from "../assets/profile.png";
+import Logout from "../components/Logout";
+import { Home } from "@mui/icons-material";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -147,11 +149,43 @@ const Profile = () => {
             >
               <div className="flex items-center justify-between mb-10">
                 <h1 className="text-4xl font-bold">Edit Profile</h1>{" "}
-                <img
-                  className="w-[50px] bg-primary p-[5px] aspect-square rounded-full object-cover"
-                  src={user.imageUrl}
-                  alt="Profile"
-                />
+                <div className="flex items-center gap-5">
+                  <Link
+                    to="/"
+                    className="w-12 h-12 btn btn-circle avatar bg-primary"
+                  >
+                    <Home sx={{ fontSize: "30px" }} />
+                  </Link>
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-circle w-12 h-12 bg-primary"
+                    >
+                      <img
+                        src={user.imageUrl}
+                        className="w-full aspect-square object-cover rounded-full opacity-80"
+                        alt="Profile"
+                      />
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="mt-3 z-40 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <Link to="/profile" className="justify-between">
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/my-appointments">Appointments</Link>
+                      </li>
+                      <li>
+                        <Logout />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
 
               <div className="ms-auto">
@@ -285,11 +319,43 @@ const Profile = () => {
             <div className="h-[90vh]">
               <div className="flex items-center justify-between mb-10">
                 <h1 className="text-4xl font-bold">Profile</h1>{" "}
-                <img
-                  className="w-[50px] bg-primary p-[5px] aspect-square rounded-full object-cover"
-                  src={user.imageUrl}
-                  alt="Profile"
-                />
+                <div className="flex items-center gap-5">
+                  <Link
+                    to="/"
+                    className="w-12 h-12 btn btn-circle avatar bg-primary"
+                  >
+                    <Home sx={{ fontSize: "30px" }} />
+                  </Link>
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-circle w-12 h-12 bg-primary"
+                    >
+                      <img
+                        src={user.imageUrl}
+                        className="w-full aspect-square object-cover rounded-full opacity-80"
+                        alt="Profile"
+                      />
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="mt-3 z-40 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <Link to="/profile" className="justify-between">
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/my-appointments">Appointments</Link>
+                      </li>
+                      <li>
+                        <Logout />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
 
               <h1 className="text-2xl font-bold capitalize mb-5">

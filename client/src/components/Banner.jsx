@@ -2,9 +2,9 @@ import React from "react";
 import TeethImg from "../assets/teeth.png";
 import { Link } from "react-router-dom";
 
-const Banner = () => {
+const Banner = ({ id }) => {
   return (
-    <div className="grid grid-cols-12 items-center pb-32">
+    <div className="grid grid-cols-12 items-center py-32" id={id}>
       <div className="col-span-6">
         <h3 className="font-medium flex gap-2">
           <span className="text-primary">-</span>EXPERT MEDICAL TREATMENT

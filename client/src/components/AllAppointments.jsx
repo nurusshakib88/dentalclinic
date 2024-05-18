@@ -18,7 +18,7 @@ const AllAppointments = () => {
   const [editAppointmentId, setEditAppointmentId] = useState(null);
   const [editPatientName, setEditPatientName] = useState("");
   const [editService, setEditService] = useState("");
-  const [editStatus, setEditStatus] = useState("pending");
+  const [editStatus, setEditStatus] = useState("waiting");
 
   const handleEditClick = (appointment) => {
     setEditAppointmentId(appointment._id);
@@ -79,7 +79,7 @@ const AllAppointments = () => {
                 value={editStatus}
                 onChange={(e) => setEditStatus(e.target.value)}
               >
-                <option value="pending">Pending</option>
+                <option value="waiting">Waiting</option>
                 <option value="accepted">Accepted</option>
                 <option value="rejected">Rejected</option>
               </select>

@@ -1,8 +1,8 @@
 import React from "react";
 
-const GetInTouch = () => {
+const GetInTouch = ({ id }) => {
   return (
-    <div className="py-20">
+    <div className="py-20" id={id}>
       <div className="py-16 rounded-3xl bg-[#D7D18D]">
         <div className="px-[350px] text-center">
           <h1 className="text-[36px] font-bold mb-5">

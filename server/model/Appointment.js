@@ -7,6 +7,7 @@ const AppointmentSchema = new mongoose.Schema({
   date: Date,
   phone: String,
   msg: String,
+  userId: String,
   status: {
     type: String,
     default: "waiting",
